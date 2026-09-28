@@ -1,30 +1,57 @@
 # Proofroom
 
-A local-first product brief and evidence-review workspace for people building with coding agents.
+Define a product brief, approve a version, prepare an agent assignment and verify configured requirements without model calls.
 
-## Workflow
-Define a goal and audience. Add requirements, preferences, exclusions and approval rules with acceptance checks. Resolve questions, then approve that exact version. Prepare a task with dependencies and all hard project rules included. Export MASTER.md, TASK.md or a portable JSON brief. Record review evidence as attested, conflict or unverified.
+[Open the workspace](https://beirne-proofroom-demo-0928.vercel.app/)
 
-## Boundaries
-No AI provider, semantic contradiction detector, repository connection, test runner or enforcement harness is included. Explicit decision keys with differing values are detected; arbitrary prose contradictions are not. Approval is a local acknowledgment, not authentication or a tamper-proof signature. Evidence references are supplied by the reviewer and are not independently verified. Anyone with file access can create their own approved brief. This is not a security boundary.
+## Local and GitHub verification
 
-Briefs persist locally under proofroom-brief-v1. Task packets and review entries are temporary and reset on refresh or brief changes. Export JSON to retain a portable brief. Google Fonts loads optional fonts. No product data is sent to a backend.
+Requires Node.js 22+. No runtime packages are required.
 
-## Development
-Static site, no build dependencies. Serve the directory with `python -m http.server 8000`.
-Run `node --test brief-core.test.cjs`.
+1. Clone this repository. The browser workspace can create and export an approved brief JSON.
+2. In the project to check, save that JSON and a `proofroom.config.json` (see the example below).
+3. Run `node /path/to/proofroom/runner.cjs /path/to/project --allow-run --out report.json`.
+4. Read the JSON receipt or import it in the workspace. Exit 0 means all configured requirements have passing checks. Exit 1 means failed, unrun, changed or uncovered checks. Exit 2 means configuration/runtime error.
 
-## Verification
-17 core regression tests cover approval, explicit conflicts, missing decisions, stale and altered task packets, dependency closure, missing/failed/attested evidence, malformed imports, size limits and persistence round trips.
-Browser checks covered the example flow, approval gate, task generation, missing evidence, a failed requirement, editing and approval invalidation, reload persistence and responsive layout. These are synthetic/local checks, not evidence that this improves real agent compliance. JSON parsing is unit tested; native file download completion is not asserted.
+`--allow-run` explicitly permits executing trusted project code with your user permissions. It is NOT a sandbox. Without it, test commands are not run and their coverage blocks completion. The supported command runtime is Node; args are passed directly without a shell. Timeouts terminate the process tree; output is bounded. Do not run untrusted repositories locally.
 
-## Earlier concepts
-`booking/` preserves the booking-scope planner. `legacy/` preserves the original feedback desk.
+```json
+{
+  "version": 1,
+  "brief": "product-brief.json",
+  "rules": [{"id":"source","requirement":"R1","file":"src/cart.cjs","op":"exists"}],
+  "tests": [{"id":"cart","requirement":"R1","args":["--test","test/cart.test.cjs"],"timeoutMs":30000}]
+}
+```
 
-## Art
-AI-generated town background with original SVG people. Background blur, reduced character scale and quiet motion keep the focus on content. OS reduced-motion preference is respected. See art-direction.md for generation details.
+Use the IDs from your own brief. File operations are exists, contains, excludes and jsonEquals (with a JSON Pointer). Node tests can assert runtime behavior, but the quality and completeness of those tests still matter.
 
-## Token-free automated review
-The primary review UI now runs deterministic assertions on user-selected text files in the browser: exists, literal contains/excludes, and JSON Pointer equality. There are no model calls or outbound file uploads. Downloadable receipts contain SHA-256 hashes of brief, rule configuration and source text. Unmapped requirements are explicitly not checked. Assertions do not prove arbitrary natural-language requirements. This version does not run application code or an external test suite.
+### Hosted repositories
 
-Run `node --test brief-core.test.cjs verifier.test.cjs`. All 25 tests passed. Browser verification selected the real index.html and confirmed two assertion passes, two uncovered requirements, a downloadable receipt, and a deliberately failing example. Residents are stationary; tree motion remains.
+Copy `runner.cjs`, `brief-core.js`, `verifier.js`, `report-summary.cjs`, your brief/config and `.github/workflows/proofroom.yml` into your repository. The workflow runs on pushes to main or manual dispatch. It installs Node 22, runs configured checks, publishes a summary and uploads a receipt artifact. Permissions are contents:read. It does not accept arbitrary pull-request code or configure secrets. GitHub's normal Actions pricing/limits apply; review uses no AI tokens.
+
+Public repository workflow status can be connected in the website using owner/repo. The connection reads GitHub's API, not source files or credentials. Open each run to see the commit, summary, logs and receipt. Private repositories can use the workflow and import receipts manually; private OAuth integration is not implemented.
+
+### Try this repository itself
+
+`node runner.cjs . --allow-run --out proofroom-report.json`
+
+The included approved brief maps three requirements to 32 core and integration tests. These are synthetic tests, not proof of market value or universal AI alignment.
+
+## Workspace
+
+Requirements have acceptance criteria, dependencies, explicit decision keys and human/test classification. Open questions and conflicting decision values block approval. Edits invalidate approval and old assignments. MASTER.md and TASK.md exports are portable. Local JSON imports are validated. Browser file checks never execute uploaded files or send them to a server. Recent receipts stay in local storage; imported receipts are explicitly unauthenticated. Tasks remain temporary.
+
+## Limits
+
+Proofroom verifies configured assertions, not arbitrary natural language. Passing tests do not prove subjective quality, security or full requirements coverage. An intentionally weak test can pass. The tool cannot infer missing tests. Local approvals and hash receipts are not signatures or an adversarial security boundary. Reports hash the approved brief, config and explicitly checked source files; they do not hash every dependency in a repository. GitHub status reflects a workflow conclusion; review the receipt for its exact assertions.
+
+## Tests
+
+`node --test brief-core.test.cjs verifier.test.cjs runner.test.cjs`
+
+Covers approval invalidation, altered assignments, missing evidence, literal/JSON assertions, missing files, hashes, real failing/passing Node tests, timeouts, no-execution mode, uncovered requirements, path escape rejection and changed checked files. Website browser smoke covers file selection, assertion results, static residents and connection status. Native download completion is not asserted.
+
+## Art and earlier concepts
+
+Town illustration generated with AI; residents are stationary and tree crowns sway. Reduced motion is honored. `booking/` and `legacy/` preserve prior concepts. `art-direction.md` records the image prompt.

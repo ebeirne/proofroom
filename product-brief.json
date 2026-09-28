@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "name": "Proofroom verification engine",
+  "goal": "Review approved project requirements using repeatable local and hosted checks without model calls.",
+  "audience": "Builders using coding agents",
+  "requirements": [
+    {
+      "id": "BRIEF",
+      "text": "Changing requirements invalidates approval and old task packets",
+      "kind": "requirement",
+      "verification": "test",
+      "acceptance": "Brief regression suite passes",
+      "dependsOn": []
+    },
+    {
+      "id": "FILES",
+      "text": "Missing files and failing assertions never pass",
+      "kind": "requirement",
+      "verification": "test",
+      "acceptance": "Verifier regression suite passes",
+      "dependsOn": []
+    },
+    {
+      "id": "RUNNER",
+      "text": "Real test failures, timeouts and uncovered requirements block completion",
+      "kind": "requirement",
+      "verification": "test",
+      "acceptance": "Runner integration suite passes",
+      "dependsOn": [
+        "BRIEF",
+        "FILES"
+      ]
+    }
+  ],
+  "questions": [],
+  "approval": {
+    "by": "Beirne Studios project fixture",
+    "snapshot": "{\"version\":1,\"name\":\"Proofroom verification engine\",\"goal\":\"Review approved project requirements using repeatable local and hosted checks without model calls.\",\"audience\":\"Builders using coding agents\",\"requirements\":[{\"id\":\"BRIEF\",\"text\":\"Changing requirements invalidates approval and old task packets\",\"kind\":\"requirement\",\"verification\":\"test\",\"acceptance\":\"Brief regression suite passes\",\"dependsOn\":[]},{\"id\":\"FILES\",\"text\":\"Missing files and failing assertions never pass\",\"kind\":\"requirement\",\"verification\":\"test\",\"acceptance\":\"Verifier regression suite passes\",\"dependsOn\":[]},{\"id\":\"RUNNER\",\"text\":\"Real test failures, timeouts and uncovered requirements block completion\",\"kind\":\"requirement\",\"verification\":\"test\",\"acceptance\":\"Runner integration suite passes\",\"dependsOn\":[\"BRIEF\",\"FILES\"]}],\"questions\":[]}"
+  }
+}

@@ -1,0 +1,28 @@
+name: Proofroom verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run approved checks
+        run: node runner.cjs . --allow-run --out proofroom-report.json
+      - name: Save verification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proofroom-receipt
+          path: proofroom-report.json
+          if-no-files-found: error
+      - name: Write review summary
+        if: always()
+        run: node report-summary.cjs

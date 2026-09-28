@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "brief": "product-brief.json",
+  "rules": [
+    {
+      "id": "runner-present",
+      "requirement": "RUNNER",
+      "file": "runner.cjs",
+      "op": "exists"
+    }
+  ],
+  "tests": [
+    {
+      "id": "brief-tests",
+      "requirement": "BRIEF",
+      "args": [
+        "--test",
+        "brief-core.test.cjs"
+      ],
+      "timeoutMs": 30000
+    },
+    {
+      "id": "file-tests",
+      "requirement": "FILES",
+      "args": [
+        "--test",
+        "verifier.test.cjs"
+      ],
+      "timeoutMs": 30000
+    },
+    {
+      "id": "runner-tests",
+      "requirement": "RUNNER",
+      "args": [
+        "--test",
+        "runner.test.cjs"
+      ],
+      "timeoutMs": 60000
+    }
+  ]
+}

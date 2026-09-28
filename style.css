@@ -22,3 +22,5 @@ body{font-family:'Zen Maru Gothic',sans-serif;font-weight:500;background:#fff}.t
 
 /* Residents remain still; only tree crowns sway. */
 .resident-route,.resident,.shoe-left,.shoe-right,.hand-front,.hand-back{animation:none!important}.resident-route{offset-distance:48%}#check-rules{font:13px/1.6 monospace}#auto-results{text-align:left;padding:20px 0}#auto-results article{padding:15px;border-bottom:1px solid var(--line)}#auto-results h3{font:900 18px 'Zen Maru Gothic',sans-serif}#selected-files{overflow-wrap:anywhere}#auto-results p{font-size:15px}
+
+.command-example{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--pale);padding:20px;text-align:left;font-size:14px}#github-runs article,#session-history article{padding:20px;text-align:left;border-bottom:1px solid var(--line)}#session-history h3{font:900 20px sans-serif}.brief-panel details p{margin:20px 0}.brief-panel a{text-decoration:underline;text-underline-offset:4px}
