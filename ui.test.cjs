@@ -17,3 +17,14 @@ test('corrupt saved session entries cannot prevent hosted controls from initiali
 });
 
 test('permission fixture rejects unauthorized access and catches deny-all implementations',()=>{const d=require('./permissions-demo.js');assert.equal(d.check(d.broken).filter(x=>!x.passed).length,2);assert.ok(d.check(d.corrected).every(x=>x.passed));assert.equal(d.check(()=>false)[0].passed,false);});
+
+test('review UI clears stale evidence after applying a diff and resets cleanly',()=>{
+ const nodes={};const document={getElementById:id=>nodes[id]??={...element(),setAttribute(k,v){this[k]=v}},createElement:()=>({...element(),setAttribute(k,v){this[k]=v}})};
+ vm.runInNewContext(fs.readFileSync(__dirname+'/review-ui.js','utf8'),{document,PermissionDemo:require('./permissions-demo.js')});
+ nodes['review-run'].onclick();assert.match(nodes['review-summary'].textContent,/2 \/ 4/);
+ nodes['review-fix'].onclick();assert.equal(nodes['review-diff'].hidden,false);
+ nodes['review-fix'].onclick();assert.equal(nodes['review-summary'].textContent,'not checked');assert.equal(nodes['review-actual'].textContent,'not checked');
+ nodes['review-run'].onclick();assert.match(nodes['review-summary'].textContent,/4 \/ 4/);
+ nodes['review-checks'].children[0].onclick();assert.equal(nodes['review-expected'].textContent,'allow');
+ nodes['review-reset'].onclick();assert.equal(nodes['review-summary'].textContent,'not checked');assert.match(nodes['review-source'].textContent,/Boolean/);
+});
