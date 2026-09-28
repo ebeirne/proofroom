@@ -1,61 +1,25 @@
 # Proofroom
 
-A visual what-if planner for software scope, by Beirne Studios.
+A local-first product brief and evidence-review workspace for people building with coding agents.
 
-[Try the live planner](https://beirne-proofroom-demo-0928.vercel.app/)
+## Workflow
+Define a goal and audience. Add requirements, preferences, exclusions and approval rules with acceptance checks. Resolve questions, then approve that exact version. Prepare a task with dependencies and all hard project rules included. Export MASTER.md, TASK.md or a portable JSON brief. Record review evidence as attested, conflict or unverified.
 
-## What it does
+## Boundaries
+No AI provider, semantic contradiction detector, repository connection, test runner or enforcement harness is included. Explicit decision keys with differing values are detected; arbitrary prose contradictions are not. Approval is a local acknowledgment, not authentication or a tamper-proof signature. Evidence references are supplied by the reviewer and are not independently verified. Anyone with file access can create their own approved brief. This is not a security boundary.
 
-Start with a small appointment-booking website. Select customer features and see the less obvious work they introduce. Click any work piece to inspect why it is included, which features depend on it, its assumption and the questions to ask before building.
+Briefs persist locally under proofroom-brief-v1. Task packets and review entries are temporary and reset on refresh or brief changes. Export JSON to retain a portable brief. Google Fonts loads optional fonts. No product data is sent to a backend.
 
-- Seven optional features: instant booking, deposits, rescheduling, reminders, multiple staff, waitlists and customer accounts.
-- Explicit dependency closure with shared work counted once.
-- Lean versus selected-version comparison.
-- Feature-specific tradeoffs and unanswered questions.
-- Markdown and JSON brief export, plus a copyable preview.
-- Browser-local persistence under a new versioned storage key.
-- Reduced-motion support and keyboard-operable controls.
+## Development
+Static site, no build dependencies. Serve the directory with `python -m http.server 8000`.
+Run `node --test brief-core.test.cjs`.
 
-The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, a full AI-generated illustrated town behind the content, original filled SVG cartoon residents following continuous walking paths, and swaying trees. Motion does not carry required information.
+## Verification
+17 core regression tests cover approval, explicit conflicts, missing decisions, stale and altered task packets, dependency closure, missing/failed/attested evidence, malformed imports, size limits and persistence round trips.
+Browser checks covered the example flow, approval gate, task generation, missing evidence, a failed requirement, editing and approval invalidation, reload persistence and responsive layout. These are synthetic/local checks, not evidence that this improves real agent compliance. JSON parsing is unit tested; native file download completion is not asserted.
 
-## Model boundaries
+## Earlier concepts
+`booking/` preserves the booking-scope planner. `legacy/` preserves the original feedback desk.
 
-This is a curated illustrative model for **one location with appointment-based services**. It is not an AI estimator, exhaustive requirements audit, quote, timeline generator or functioning booking service. Counts represent distinct modeled work pieces, not equal-sized tasks or development effort.
-
-The lean baseline accepts booking requests, a person reviews them, and a confirmation follows. Selected automation extends that baseline. In this scenario deposits assume slot reservation before payment; other business models could handle deposits differently. The assumptions are exposed in the interface.
-
-No accounts or backend are included. Choices and a project note stay in the current browser. Clearing browser data can remove them. Export a brief to keep a portable copy. The app does not transmit the project note. Google Fonts supplies optional typography; system fonts remain available as fallbacks.
-
-## Run
-
-No build step or application packages are required.
-
-```sh
-python -m http.server 8000
-```
-
-Open http://localhost:8000. Serve over HTTP so browser storage and downloads behave consistently.
-
-## Test
-
-Requires Node.js 18 or newer, with no package installation:
-
-```sh
-node --test model.test.cjs
-```
-
-The tests cover the lean baseline, transitive dependencies, shared dependency removal, every one of the 128 feature combinations, input normalization, model immutability and export consistency. These validate the implemented model, not whether its assumptions fit a particular customer's business.
-
-Browser checks include presets, feature selection/removal, dependency detail dialogs, reload persistence, brief preview, copy action, download request, reduced-motion support and responsive layouts. Native download completion on disk is not asserted by these checks.
-
-## Files
-
-- `model.js`: inspectable feature/dependency model and pure planning/export functions.
-- `app.js`: state, controls, persistence and download interactions.
-- `index.html` and `style.css`: interface, artwork and motion.
-- `model.test.cjs`: model regression tests.
-- `legacy/`: original feedback-desk concept, retained with its separate storage key.
-
-## Design and AI disclosure
-
-This is self-initiated concept work. The full town illustration is AI-generated; the small characters are SVG. The product and code were built with AI assistance and tested locally. No customer affiliation, uniqueness guarantee or business results are claimed.
+## Art
+AI-generated town background with original SVG people. Background blur, reduced character scale and quiet motion keep the focus on content. OS reduced-motion preference is respected. See art-direction.md for generation details.
