@@ -55,3 +55,11 @@ Covers approval invalidation, altered assignments, missing evidence, literal/JSO
 ## Art and earlier concepts
 
 Town illustration generated with AI; residents are stationary and tree crowns sway. Reduced motion is honored. `booking/` and `legacy/` preserve prior concepts. `art-direction.md` records the image prompt.
+
+## Portfolio release check (2026-09-28)
+
+The landing page starts with a working fail / fix / pass calculation, with the full workspace in a disclosure below it. This is a runnable portfolio MVP, not a general AI correctness guarantee.
+
+Release checks: 39 existing model, brief, file-verifier and process-runner tests pass on Windows. Two UI regressions cover demo reset and corrupt saved history. Browser smoke covers approval, task creation, explicit failed/uncovered file checks and public GitHub status. The self-verification runner reports all three configured requirements covered.
+
+Run all checks: `node --test model.test.cjs brief-core.test.cjs verifier.test.cjs runner.test.cjs ui.test.cjs`.
