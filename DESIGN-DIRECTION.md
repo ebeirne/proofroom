@@ -1,8 +1,10 @@
-# Dark workspace
-Approved direction: Resend spacing, Vercel result clarity, Beirne black-and-white restraint.
-References: https://resend.com/ , https://vercel.com/geist/introduction , https://linear.app/docs/conceptual-model .
-Black canvas and thin borders connect to the portfolio. DM Sans provides restrained headings; IBM Plex Mono identifies code and evidence. Color is reserved for result status, plus a small RGB brand underline. No decorative background movement. Brief/checks/history tabs keep the functioning tools accessible.
+# Proofroom: structural poster
 
-Proofroom identity: warm amber/copper accents and an original CSS optical-plate sculpture. Slow 22-second rotation; static under reduced motion; decorative and pointer-transparent.
+Approved direction: the existing black/electric-blue technical study, pushed toward loud typography and a structural graphic at the user's request.
 
-Selected: third technical registration study. IBM Plex Mono throughout, blue offset wordmark. Actual demo pass aligns the impressions; failure offsets them; reset restores idle. Replaces amber lens.
+- Oversized condensed Barlow Condensed display type follows the requested bigger, unconventional typography; Space Grotesk provides a structurally distinct readable voice. IBM Plex Mono is retained for code and evidence. Refero typography craft supports purpose-based display/interface pairing.
+- A projected stack of registration outlines represents implementation drift. Offset white slices align on an actual demo pass, rather than decorative motion implying verification.
+- The rule and evidence sit together, preserving the working permission fixture and inspectable results.
+- Black, blue and white remain the approved palette. Blue signals interaction and the structural drawing; the background marks remain subordinate.
+- Static composition first. No new looping animation; reduced-motion respects state transition preferences.
+- No new claims about universal AI correctness or security.

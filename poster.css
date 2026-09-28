@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--electric:#4263ff;--paper:#f0eee8;--line:#34363d}
+body{font-family:'Space Grotesk',Arial,sans-serif;color:var(--paper)}
+#registration-field{opacity:.27}
+.masthead{padding:24px 4vw;border-color:#34363d}.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:27px;letter-spacing:-1.8px}.masthead nav{font-family:'IBM Plex Mono',monospace;font-size:14px}
+main{max-width:1800px;padding:0 4vw}
+.poster-hero{position:relative;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;padding-top:44px;isolation:isolate}
+.poster-copy{position:relative;z-index:2;padding:0 0 28px 2vw}
+.poster-copy h1{font-family:'Barlow Condensed','Arial Narrow',Impact,sans-serif;font-size:clamp(88px,11vw,174px);font-weight:800;line-height:.85;letter-spacing:-.035em;margin:0 0 32px;text-transform:uppercase}
+.poster-copy h1 span{color:var(--electric)}
+.poster-copy p{font-size:clamp(18px,1.65vw,25px);line-height:1.45;letter-spacing:-.6px;margin:0 0 24px}
+.hero-link{display:inline-flex;gap:40px;align-items:center;font:15px 'IBM Plex Mono',monospace;border-bottom:1px solid #73757b;padding:0 0 12px}.hero-link span{color:#8b9fff}.hero-link:hover{border-color:var(--electric)}
+.registration{border:0;margin:0;padding:0;overflow:visible;min-width:0;transform:rotate(-8deg)}
+.registration:before,.registration:after{display:none}
+.registration svg{display:block;width:112%;margin-left:-8%;overflow:visible;filter:drop-shadow(0 0 14px #4263ff26)}
+.slice{stroke:var(--electric);stroke-width:1.5;vector-effect:non-scaling-stroke;transition:transform 1s cubic-bezier(.2,.7,.2,1),stroke 1s}
+.slice.displaced{stroke:#f0eee8}.axis{stroke:#6471a0;opacity:.5;stroke-width:.6}
+.registration[data-state=pass] .displaced{transform:translateX(-58px);stroke:#96abff}
+.registration-key{font:12px 'IBM Plex Mono',monospace;transform:rotate(8deg);margin:0 0 12px;color:#9299ad;gap:16px}
+.poster-signature{grid-column:1/-1;position:relative;z-index:-1;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;font-size:clamp(105px,22.8vw,365px);line-height:.83;letter-spacing:-.047em;text-transform:uppercase;white-space:nowrap;margin:36px 0 0;border-bottom:1px solid var(--line);padding-bottom:18px}
+.poster-signature span{color:transparent;-webkit-text-stroke:1.5px var(--paper)}.poster-signature sup{font:24px 'IBM Plex Mono',monospace;vertical-align:top;display:inline-block;margin:22px 0 0 15px;color:var(--electric)}
+.product-demo{display:grid;grid-template-columns:1fr 1.15fr;gap:6vw;margin:0;padding:64px 2vw;border:0;border-bottom:1px solid var(--line)}
+.section-index{font:13px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:#8f9dcc;display:block;margin-bottom:27px}
+.product-demo h2{font:700 clamp(45px,5.1vw,78px)/.98 'Space Grotesk',sans-serif;letter-spacing:-.065em;margin:0 0 24px}
+.product-demo p{font:18px/1.5 'Space Grotesk',sans-serif;color:#b3b5bf;max-width:none}.demo-brief>a{font:14px 'IBM Plex Mono',monospace;border-bottom:1px solid #73757b;display:inline-block;margin-top:20px;padding-bottom:6px}
+.demo-engine{background:#08090df5;padding:28px;border:1px solid #343947;box-shadow:8px 8px 0 #4263ff}
+.demo-engine .section-index{margin-bottom:16px}.command-example{font-size:clamp(15px,1.4vw,21px);padding:20px 0;margin-top:0;background:none;border:0;border-block:1px solid #343947;white-space:pre-wrap;overflow-wrap:anywhere}
+.quick-actions{gap:8px}.quick-actions button{font:14px 'IBM Plex Mono',monospace;padding:13px 14px}.primary{background:var(--electric)}#reset-demo{background:none;border-color:transparent;color:#a8abb5}
+#demo-result{font:500 19px/1.4 'Space Grotesk',sans-serif;padding:18px 0;margin:22px 0 0;border:0;min-height:64px}#demo-cases{font:13px/1.9 'IBM Plex Mono',monospace;margin:0}#demo-cases li{border-bottom:1px solid #222630;padding:4px 0}
+.product-demo .small-note{font:13px/1.6 'IBM Plex Mono',monospace!important;color:#9195a3!important;margin:20px 0 0}
+.advanced-workspace,.recorded-demo,footer{margin-inline:2vw}.advanced-workspace[open]{background:#08090b;padding:0 30px 30px}.brief-panel h2{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-1.5px}.brief-panel input,.brief-panel textarea,.brief-panel select{font-family:'IBM Plex Mono',monospace}.workspace-tabs button{font-family:'Space Grotesk',sans-serif}summary{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:24px}
+@media(min-width:1500px){.poster-signature{font-size:340px}}
+@media(max-width:800px){.poster-hero{padding-top:38px;grid-template-columns:1fr .8fr}.poster-copy h1{font-size:12vw}.poster-copy p{font-size:17px}.registration-key{font-size:10px;flex-direction:column;gap:4px}.product-demo{gap:30px;grid-template-columns:1fr}.demo-brief h2 br{display:none}.demo-engine{padding:24px}.poster-signature{font-size:22vw}.poster-signature sup{font-size:16px;margin-left:7px}.hero-link{font-size:13px;gap:15px}}
+@media(max-width:500px){.masthead nav{font-size:12px;gap:14px}.brand{font-size:24px}.poster-hero{grid-template-columns:1fr;padding-top:34px}.poster-copy h1{font-size:22vw;letter-spacing:-.035em;margin-bottom:24px}.poster-copy{padding-bottom:0}.poster-copy p{font-size:18px}.registration{width:70%;justify-self:end;margin-top:-15px;pointer-events:none}.registration svg{width:100%;margin:0}.registration-key{display:none}.poster-signature{margin-top:4px;font-size:21.5vw;padding-bottom:16px}.poster-signature sup{font-size:12px;margin-top:9px;margin-left:4px}.product-demo{padding:36px 0;gap:25px}.product-demo h2{font-size:46px}.section-index{margin-bottom:18px}.demo-engine{padding:20px;box-shadow:5px 5px 0 #4263ff}.quick-actions button{font-size:12px;padding:12px}.advanced-workspace[open]{padding-inline:14px}.poster-copy .hero-link{position:relative;z-index:3}}
+@media(prefers-reduced-motion:reduce){.slice{transition:none}}
+
+.poster-hero>*{min-width:0}.poster-copy h1{font-size:clamp(78px,9.6vw,154px);white-space:nowrap}.poster-signature{font-size:20vw;letter-spacing:-.055em}.registration svg{width:100%;margin-left:0}.poster-signature sup{font-size:14px;margin-left:8px}@media(min-width:1500px){.poster-signature{font-size:300px}}@media(max-width:800px){.poster-copy h1{font-size:10vw}.poster-signature{font-size:19.5vw}}@media(max-width:500px){.poster-copy h1{font-size:21vw}.poster-signature{font-size:19vw}.poster-signature sup{font-size:10px;margin-left:4px}}
+
+@media(max-width:500px){.poster-copy h1{font-size:19.2vw}}
