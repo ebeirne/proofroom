@@ -70,3 +70,7 @@ The interface uses a minimal black canvas with brief, checks and history tabs, i
 ### Interactive permissions example
 The landing-page example runs four deterministic checks against a sample delete permission function: owner, viewer, unknown role, and signed out. Apply the fix and rerun to compare results. The browser and Node tests share permissions-demo.js. This demonstrates explicit rule verification, not a security audit. The optional recorded walkthrough shows a separate cart calculation example.
 
+
+### Cinematic interface
+The landing page uses original Blender blade artwork with an animated 1080p/120 fps asset. Source geometry frames were rendered at 12 fps and motion-interpolated to 120 fps. Playback pauses outside the viewport, in hidden tabs, and with reduced-motion preferences. The poster remains visible when motion is disabled. The complete brief, checks, and history workspace remains available below the demonstration.
+
