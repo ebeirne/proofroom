@@ -14,9 +14,9 @@ Start with a small appointment-booking website. Select customer features and see
 - Feature-specific tradeoffs and unanswered questions.
 - Markdown and JSON brief export, plus a copyable preview.
 - Browser-local persistence under a new versioned storage key.
-- A motion toggle, reduced-motion support and keyboard-operable controls.
+- Reduced-motion support and keyboard-operable controls.
 
-The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, an original AI-generated garden illustration and gently animated SVG paper and pencil characters. Motion does not carry required information.
+The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, an original AI-generated garden illustration and original SVG townspeople walking in the margins and trees swaying in the wind. Motion does not carry required information.
 
 ## Model boundaries
 
@@ -46,7 +46,7 @@ node --test model.test.cjs
 
 The tests cover the lean baseline, transitive dependencies, shared dependency removal, every one of the 128 feature combinations, input normalization, model immutability and export consistency. These validate the implemented model, not whether its assumptions fit a particular customer's business.
 
-Browser checks include presets, feature selection/removal, dependency detail dialogs, reload persistence, brief preview, copy action, download request, motion controls and responsive layouts. Native download completion on disk is not asserted by these checks.
+Browser checks include presets, feature selection/removal, dependency detail dialogs, reload persistence, brief preview, copy action, download request, reduced-motion support and responsive layouts. Native download completion on disk is not asserted by these checks.
 
 ## Files
 
