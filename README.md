@@ -63,3 +63,6 @@ The landing page starts with a working fail / fix / pass calculation, with the f
 Release checks: 39 existing model, brief, file-verifier and process-runner tests pass on Windows. Two UI regressions cover demo reset and corrupt saved history. Browser smoke covers approval, task creation, explicit failed/uncovered file checks and public GitHub status. The self-verification runner reports all three configured requirements covered.
 
 Run all checks: `node --test model.test.cjs brief-core.test.cjs verifier.test.cjs runner.test.cjs ui.test.cjs`.
+
+## Dark workspace redesign
+The interface uses a minimal black canvas with brief, checks and history tabs, including keyboard tab navigation. The recorded demo is retained in a disclosure and labeled as the earlier interface. Existing verification engines are unchanged. All 41 tests pass after redesign; desktop and 390px browser checks confirm the demo and tab panels work.
