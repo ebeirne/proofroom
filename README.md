@@ -23,3 +23,8 @@ Browser checks covered the example flow, approval gate, task generation, missing
 
 ## Art
 AI-generated town background with original SVG people. Background blur, reduced character scale and quiet motion keep the focus on content. OS reduced-motion preference is respected. See art-direction.md for generation details.
+
+## Token-free automated review
+The primary review UI now runs deterministic assertions on user-selected text files in the browser: exists, literal contains/excludes, and JSON Pointer equality. There are no model calls or outbound file uploads. Downloadable receipts contain SHA-256 hashes of brief, rule configuration and source text. Unmapped requirements are explicitly not checked. Assertions do not prove arbitrary natural-language requirements. This version does not run application code or an external test suite.
+
+Run `node --test brief-core.test.cjs verifier.test.cjs`. All 25 tests passed. Browser verification selected the real index.html and confirmed two assertion passes, two uncovered requirements, a downloadable receipt, and a deliberately failing example. Residents are stationary; tree motion remains.
