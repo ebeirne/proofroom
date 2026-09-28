@@ -16,7 +16,7 @@ Start with a small appointment-booking website. Select customer features and see
 - Browser-local persistence under a new versioned storage key.
 - Reduced-motion support and keyboard-operable controls.
 
-The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, an original AI-generated garden illustration and original SVG townspeople walking in the margins and trees swaying in the wind. Motion does not carry required information.
+The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, a full AI-generated illustrated town behind the content, original filled SVG cartoon residents following continuous walking paths, and swaying trees. Motion does not carry required information.
 
 ## Model boundaries
 
@@ -58,4 +58,4 @@ Browser checks include presets, feature selection/removal, dependency detail dia
 
 ## Design and AI disclosure
 
-This is self-initiated concept work. The supporting garden illustration is AI-generated; the small characters are SVG. The product and code were built with AI assistance and tested locally. No customer affiliation, uniqueness guarantee or business results are claimed.
+This is self-initiated concept work. The full town illustration is AI-generated; the small characters are SVG. The product and code were built with AI assistance and tested locally. No customer affiliation, uniqueness guarantee or business results are claimed.
