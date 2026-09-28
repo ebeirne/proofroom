@@ -1,43 +1,61 @@
 # Proofroom
 
-A small, browser-local feedback desk by Beirne Studios.
+A visual what-if planner for software scope, by Beirne Studios.
 
-[Try the live demo](https://beirne-proofroom-demo-0928.vercel.app/)
+[Try the live planner](https://beirne-proofroom-demo-0928.vercel.app/)
 
-## How it works
+## What it does
 
-1. Add a note with context, owner and priority.
-2. Move it through Open, In review and Resolved. Search and filter the list.
-3. Export a JSON handoff as a backup or import it into another browser.
+Start with a small appointment-booking website. Select customer features and see the less obvious work they introduce. Click any work piece to inspect why it is included, which features depend on it, its assumption and the questions to ask before building.
 
-Click a note to edit it. Deleting notes and resetting sample data require a second confirmation. Imports are validated and require confirmation before replacing the current workspace.
+- Seven optional features: instant booking, deposits, rescheduling, reminders, multiple staff, waitlists and customer accounts.
+- Explicit dependency closure with shared work counted once.
+- Lean versus selected-version comparison.
+- Feature-specific tradeoffs and unanswered questions.
+- Markdown and JSON brief export, plus a copyable preview.
+- Browser-local persistence under a new versioned storage key.
+- A motion toggle, reduced-motion support and keyboard-operable controls.
 
-## Run locally
+The explanation appears before the planner. The visual direction uses white space, navy ink, cyan and pink stationery shapes, an original AI-generated garden illustration and gently animated SVG paper and pencil characters. Motion does not carry required information.
 
-No build step or runtime dependencies. Serve this directory with any static server, for example:
+## Model boundaries
+
+This is a curated illustrative model for **one location with appointment-based services**. It is not an AI estimator, exhaustive requirements audit, quote, timeline generator or functioning booking service. Counts represent distinct modeled work pieces, not equal-sized tasks or development effort.
+
+The lean baseline accepts booking requests, a person reviews them, and a confirmation follows. Selected automation extends that baseline. In this scenario deposits assume slot reservation before payment; other business models could handle deposits differently. The assumptions are exposed in the interface.
+
+No accounts or backend are included. Choices and a project note stay in the current browser. Clearing browser data can remove them. Export a brief to keep a portable copy. The app does not transmit the project note. Google Fonts supplies optional typography; system fonts remain available as fallbacks.
+
+## Run
+
+No build step or application packages are required.
 
 ```sh
 python -m http.server 8000
 ```
 
-Open http://localhost:8000. Keep using the same origin to retain browser-local notes.
+Open http://localhost:8000. Serve over HTTP so browser storage and downloads behave consistently.
 
-## What this is and is not
+## Test
 
-This is a self-initiated software concept. The sample notes are fictional. Data is stored in localStorage in the current browser. There is no backend, account system, automatic syncing or real-time collaboration. Export before clearing browser data. JSON export/import is a manual handoff, not cloud sharing.
+Requires Node.js 18 or newer, with no package installation:
+
+```sh
+node --test model.test.cjs
+```
+
+The tests cover the lean baseline, transitive dependencies, shared dependency removal, every one of the 128 feature combinations, input normalization, model immutability and export consistency. These validate the implemented model, not whether its assumptions fit a particular customer's business.
+
+Browser checks include presets, feature selection/removal, dependency detail dialogs, reload persistence, brief preview, copy action, download request, motion controls and responsive layouts. Native download completion on disk is not asserted by these checks.
 
 ## Files
 
-- index.html: interface and explanation
-- style.css: white, navy, cyan and coral visual theme
-- app.js: feedback state, validation, storage and handoffs
-- stationery-garden.png: original AI-generated supporting illustration
-- vercel.json: static hosting configuration
+- `model.js`: inspectable feature/dependency model and pure planning/export functions.
+- `app.js`: state, controls, persistence and download interactions.
+- `index.html` and `style.css`: interface, artwork and motion.
+- `model.test.cjs`: model regression tests.
+- `legacy/`: original feedback-desk concept, retained with its separate storage key.
 
 ## Design and AI disclosure
 
-The visual direction uses a Japanese stationery-inspired illustration, generous white space and navy outlines with cyan and pink accents. The illustration was generated with AI. The interface and code were developed with AI assistance and reviewed through local browser checks. No client affiliation or measured business outcomes are claimed.
-
-## Verification
-
-The current app was exercised in the browser for creating/editing notes, status changes, filtering, reload persistence, deletion confirmation, JSON export preview and import. Desktop and phone layouts were checked. No automated end-to-end test suite is included.
+This is self-initiated concept work. The supporting garden illustration is AI-generated; the small characters are SVG. The product and code were built with AI assistance and tested locally. No customer affiliation, uniqueness guarantee or business results are claimed.
