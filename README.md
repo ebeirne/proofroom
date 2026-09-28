@@ -66,3 +66,7 @@ Run all checks: `node --test model.test.cjs brief-core.test.cjs verifier.test.cj
 
 ## Dark workspace redesign
 The interface uses a minimal black canvas with brief, checks and history tabs, including keyboard tab navigation. The recorded demo is retained in a disclosure and labeled as the earlier interface. Existing verification engines are unchanged. All 41 tests pass after redesign; desktop and 390px browser checks confirm the demo and tab panels work.
+
+### Interactive permissions example
+The landing-page example runs four deterministic checks against a sample delete permission function: owner, viewer, unknown role, and signed out. Apply the fix and rerun to compare results. The browser and Node tests share permissions-demo.js. This demonstrates explicit rule verification, not a security audit. The optional recorded walkthrough shows a separate cart calculation example.
+
